@@ -7,6 +7,6 @@ week_days={
     4:'friday',
     5:'saturday',
     6:'sunday'
-};
+}
 
 print(week_days[0])
