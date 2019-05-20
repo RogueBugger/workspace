@@ -23,9 +23,6 @@ for i in range(len(data)):
     jobi=job(datas[0][i],datas[1][i],datas[2][i])
     jobs.append(jobi)
 
-
-
-
 for i in range(len(jobs)):
     for j in range(len(jobs)):
         if jobs[j].job_priority > jobs[i].job_priority:
