@@ -9,9 +9,7 @@ a=np.asarray(img)
 cv2.imshow('image',img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-c=0
 for i in a:
     for j in i:
         print(j)
     print('\n')
-print(c)
