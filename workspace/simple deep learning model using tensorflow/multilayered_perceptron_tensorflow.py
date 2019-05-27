@@ -62,3 +62,4 @@ with tf.Session() as sess:
     print(sess.run(yHO,feed_dict={x:x2}))
     print(sess.run(yHO,feed_dict={x:x3}))
     print(sess.run(yHO,feed_dict={x:x4}))
+  
