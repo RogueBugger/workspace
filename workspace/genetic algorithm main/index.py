@@ -2,7 +2,7 @@ if  __name__ == "__main__":
     from population import Population
    
 
-    target = 'sybil a kailena fuck you to the core'
+    target = 'this is a sentence'
     maxpop = 10000
     mutation_rate = 0.01
 
