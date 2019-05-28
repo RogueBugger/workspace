@@ -26,7 +26,8 @@ class Dna:
 
     def crossOver(self, partner):
         child = Dna(len(partner.gene))
-        midpoint = math.floor((len(partner.gene)) / 2)
+        midpoint = random.randint(0, len(partner.gene))
+        #midpoint = math.floor(len(partner.gene)/2)
         for i in range(len(self.gene)):
             child.gene[i] = self.gene[i] if i > midpoint else partner.gene[i]
         
@@ -34,5 +35,5 @@ class Dna:
 
     def mutation(self, mutationRate):
         for e in range(len(self.gene)):
-            if math.floor(random.random()*10) < mutationRate:
+            if random.random() < mutationRate:
                 self.gene[e] = newChar()

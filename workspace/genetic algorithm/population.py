@@ -9,6 +9,13 @@ def translate(value, leftmin, leftmax, rightmin, rightmax):
 
     valueScaled = float(value - leftmin) / float(leftspan)
     return (rightmin + (valueScaled * rightspan))
+def Sigmoid(ws):
+    etop=math.exp(ws)
+    sig=1/(1+etop)
+
+def mapFromTo(x,a,b,c,d):
+   y=(x-a)/(b-a)*(d-c)+c
+   return y
 
 
 class Population:
@@ -34,17 +41,22 @@ class Population:
         for pop in self.population:
             fit.append(pop.fitness)
         maxfitness=max(fit)
-        print(maxfitness)
-        for pop in self.population:
-            for _ in range(math.floor(translate(pop.fitness, 0, maxfitness, 0,1)*100)):
-                self.matingPool.append(pop)
+
         
+        for pop in self.population:
+            '''for _ in range(math.ceil(pop.fitness)*100):
+                self.matingPool.append(pop)'''
+               
+            '''for _ in range(math.floor((pop.fitness-0)/(1-0)*10)):
+                self.matingPool.append(pop)'''
+            for _ in range(math.floor(mapFromTo(pop.fitness, 0, maxfitness, 0, 1)*100)):
+                self.matingPool.append(pop)
 
         
     def generate(self):
         for pop in range(len(self.population)):
-            parent1=random.randint(0,math.floor(len(self.matingPool)))
-            parent2=random.randint(0,math.floor(len(self.matingPool)))
+            parent1=random.randint(0,len(self.matingPool)-1)
+            parent2=random.randint(0,len(self.matingPool)-1)
             partnerA = self.matingPool[parent1]
             partnerB = self.matingPool[parent2]
             child = partnerA.crossOver(partnerB)
@@ -60,7 +72,7 @@ class Population:
             if self.population[pop].fitness > maxfitness:
                 maxfitness = self.population[pop].fitness  
                 index = pop
-
-        self.best = self.best.join(self.population[index].gene)
+        tring = ""
+        self.best = tring.join(self.population[index].gene)
         if maxfitness == 1:
             finished = True
