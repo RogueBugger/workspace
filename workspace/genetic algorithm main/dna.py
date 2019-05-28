@@ -4,11 +4,13 @@ import math,random
 
 def newChar():
     r = randint(63, 122)  
-    r = 32 if r == 63 else randint(63, 122)
-    r = 46 if r == 64 else randint(63, 122)
+    #r = 32 if r == 63 else randint(63, 122)
+    r = 32 if r == 63 else r
+   
+    r = 46 if r == 64 else r
     return chr(r)
 
-class Dna:
+class Dna: 
     def __init__(self, len):
         self.gene=[]
         for _ in range(len):
@@ -18,11 +20,11 @@ class Dna:
 
     def calcFitness(self, target):
         score = 0
-        for e in self.gene:
-            if e in target:
-                score+=1
-        self.fitness= score / len(target)
-
+        for i in range(len(self.gene)):
+            if self.gene[i] == target[i]:
+                score +=1
+        self.fitness = (score / len(target)) ** 8
+        #self.fitness = (score / len(target))
 
     def crossOver(self, partner):
         child = Dna(len(partner.gene))
@@ -36,4 +38,4 @@ class Dna:
     def mutation(self, mutationRate):
         for e in range(len(self.gene)):
             if random.random() < mutationRate:
-                self.gene[e] = newChar()
+                self.gene[e] = newChar() 

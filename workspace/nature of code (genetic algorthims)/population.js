@@ -34,7 +34,7 @@ class Population {
       this.population[i].calcFitness(target);
     }
   }
- 
+
   // Generate a mating pool
   naturalSelection() {
     // Clear the ArrayList

@@ -9,9 +9,7 @@ def translate(value, leftmin, leftmax, rightmin, rightmax):
 
     valueScaled = float(value - leftmin) / float(leftspan)
     return (rightmin + (valueScaled * rightspan))
-def Sigmoid(ws):
-    etop=math.exp(ws)
-    sig=1/(1+etop)
+
 
 def mapFromTo(x,a,b,c,d):
    y=(x-a)/(b-a)*(d-c)+c
@@ -25,15 +23,18 @@ class Population:
         self.maxpop=maxpop
         self.population=[]
         for _ in range(maxpop):
-            self.population.append(Dna(len(target)))
+            self.population.append(Dna(len(target))) 
         self.matingPool=[]
         self.best=""
         self.generation = 0
         self.finished = False
+        self.average_fitness = 0
+        self.calcFitness()
 
     def calcFitness(self):
         for pop in self.population:
             pop.calcFitness(self.target)
+
            
 
     def reproduction(self):
@@ -44,19 +45,13 @@ class Population:
 
         
         for pop in self.population:
-            '''for _ in range(math.ceil(pop.fitness)*100):
-                self.matingPool.append(pop)'''
-               
-            '''for _ in range(math.floor((pop.fitness-0)/(1-0)*10)):
-                self.matingPool.append(pop)'''
-            for _ in range(math.floor(mapFromTo(pop.fitness, 0, maxfitness, 0, 1)*100)):
+            for _ in range(math.floor(translate(pop.fitness, 0, maxfitness, 0, 1)*100)):
                 self.matingPool.append(pop)
-
-        
+               
     def generate(self):
         for pop in range(len(self.population)):
-            parent1=random.randint(0,len(self.matingPool)-1)
-            parent2=random.randint(0,len(self.matingPool)-1)
+            parent1=random.randint(0,(len(self.matingPool)-1))
+            parent2=random.randint(0,(len(self.matingPool)-1))
             partnerA = self.matingPool[parent1]
             partnerB = self.matingPool[parent2]
             child = partnerA.crossOver(partnerB)
@@ -74,5 +69,14 @@ class Population:
                 index = pop
         tring = ""
         self.best = tring.join(self.population[index].gene)
+        
         if maxfitness == 1:
-            finished = True
+            self.finished = True
+
+    def fitnesss(self):
+        total = 0
+        for pop in range(len(self.population)):
+            total =  self.population[pop].fitness
+
+        return (total / len(self.population))
+

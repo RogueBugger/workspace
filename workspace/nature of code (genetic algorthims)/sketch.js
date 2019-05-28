@@ -61,13 +61,13 @@ function setup() {
 }
 
 function draw() {
-   // Calculate fitness
-   population.calcFitness();
   // Generate mating pool
   population.naturalSelection();
   //Create next generation
   population.generate();
- 
+  // Calculate fitness
+  population.calcFitness();
+
   population.evaluate();
 
   // If we found the target phrase, stop

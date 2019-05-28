@@ -2,19 +2,18 @@ if  __name__ == "__main__":
     from population import Population
    
 
-    target = 'he ph'
-    maxpop = 400
+    target = 'sybil a kailena fuck you to the core'
+    maxpop = 10000
     mutation_rate = 0.01
 
 
     population = Population(mutation_rate, maxpop, target)  
-    i=1
-    k=1
-    while(population.best!=target):
+   
+    while(population.finished!=True):
         population.calcFitness()
         population.reproduction()
         population.generate()
+        population.calcFitness()
         population.evaluate()
-        #print(population.generation)
         print(population.best,population.generation)
-    
+      
