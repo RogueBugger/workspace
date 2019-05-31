@@ -44,7 +44,7 @@ class DNA {
         score++;
       }
     }
-    this.fitness = score / target.length;
+    this.fitness = (score / target.length) *(score / target.length) *(score / target.length) *(score / target.length) ;
   }
 
   // Crossover

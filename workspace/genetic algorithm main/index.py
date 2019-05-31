@@ -2,8 +2,8 @@ if  __name__ == "__main__":
     from population import Population
    
 
-    target = 'this is a sentence'
-    maxpop = 10000
+    target = 'Could tap water be the culprit behind your dull skin and frizzy hair'
+    maxpop = 15000
     mutation_rate = 0.01
 
 

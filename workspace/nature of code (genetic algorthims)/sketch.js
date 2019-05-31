@@ -51,9 +51,8 @@ function setup() {
   //stats.position(10,200);
   stats.class("stats");
 
-  //createCanvas(640, 360);
-  target = "To be or not to be.";
-  popmax = 200;
+  target = "aaaaaagglaaaaaaaaaa";
+  popmax = 10000;
   mutationRate = 0.01;
 
   // Create a population with a target phrase, mutation rate, and population max
