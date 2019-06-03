@@ -61,3 +61,13 @@ print(nj.join(x))
 
 
 
+'''n1 = list(map(int, str(n)))
+    for i in str(n):
+        if int(i) % 2 != 0  and int(i) != 9 and str(n)[0] != 9 and 9 not in n1:
+            x.append(str(int(i)+1))
+            for i in range(n1.index(int(i))+1,len(str(n))):
+                x.append(str(0))
+            minPlus = nx.join(x)
+            return int(minPlus), int(minMinus)
+        else:
+            x.append(str(i))'''
