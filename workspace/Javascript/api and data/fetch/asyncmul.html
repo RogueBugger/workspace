@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fetch api using async</title>
+    </head>
+    <body>
+        <script>
+            const filenames = [
+            'image.jpg',
+            'image2.jpg',
+            'image3.jpg'
+            ];
+            getPicture(filenames).then(response =>{
+                console.log('finished');
+            })
+            .catch(error=>{
+                console.error(error);
+            });
+
+            async function getPicture(filenames){
+                for (let file of filenames){
+                const response = await fetch(file);
+                const result = await response.blob();
+                const img = document.createElement("img");
+                img.src = URL.createObjectURL(result);
+                img.width = "400";
+                document.body.append(img);                
+                
+            }
+            }
+        </script>
+    </body>
+</html>

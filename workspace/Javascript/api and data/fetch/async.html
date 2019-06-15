@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fetch api using async</title>
+        <img src="" id="image" width="400"/>
+    </head>
+    <body>
+        <p id="paragraph"/>
+        <script>
+            getPicture().then(response =>{
+                console.log('finished');
+            })
+            .catch(error=>{
+                console.error(error);
+            });
+            getText().then(response =>{
+                console.log('finished');
+            })
+            .catch(error=>{
+                console.error(error);
+            });
+            async function getText(){
+                const response = await fetch('poem.txt');
+                const result = await response.text();
+                document.getElementById('paragraph').innerText = result;
+                
+            }
+            async function getPicture(){
+                const respons = await fetch('image.png');
+                const resul = await respons.blob();
+                document.getElementById('image').src = URL.createObjectURL(resul);
+                
+            }
+        </script>
+    </body>
+</html>

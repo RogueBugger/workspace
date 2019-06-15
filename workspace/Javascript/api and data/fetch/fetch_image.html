@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>data/api</title>
+</head>
+<body>
+    <img src="" id="image" width="400" />
+    <script>
+        console.log('about to fetch a data')
+        fetch('image.jpg').then(response =>{
+            console.log(response);
+            return response.blob();
+        }).then(blob => {
+            console.log(blob);
+            document.getElementById('image').src = URL.createObjectURL(blob);
+        }).catch(error=>{
+            console.log('error');
+            console.error(error);
+        });
+    </script>
+</body>
+</html>
