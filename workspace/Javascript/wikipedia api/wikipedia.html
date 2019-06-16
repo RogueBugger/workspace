@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wikipedia api</title>
+</head>
+<body>
+    <h1>Wikipedia api</h1>
+    <p id="fetched data"/>
+    <p>word: <input id="userinput" value=" " /></p>
+    <script>        
+        async function fetchData(){
+            const userinput = document.getElementById("userinput").value;
+            console.log(userinput);
+            let url = 'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search='+userinput;
+            
+            const file = loadJSON(url);
+            console.log(file);
+        }
+        
+        fetchData();
+    
+    </script>
+</body>
+</html>

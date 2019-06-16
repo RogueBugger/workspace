@@ -1,0 +1,11 @@
+1.wikipedia api using async method using node.js
+   => incomplete cannot be done in wikipedia api
+   => must have to use some other api to work with.
+2.file folder->get geo location and sent to server
+   => format the webpage
+
+3. file folder -> selfi
+   => store the image in server locally and save the path to the image in database
+
+4. id = 1.1
+   => refer 1.1 video
