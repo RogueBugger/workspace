@@ -2,8 +2,8 @@ if  __name__ == "__main__":
     from population import Population
    
 
-    target = 'fuck the world'
-    maxpop = 20000
+    target = 'fuck the world population maxpop'
+    maxpop = 10000
     mutation_rate = 0.01
 
 

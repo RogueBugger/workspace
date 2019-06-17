@@ -1,0 +1,55 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+    <style>
+        #myMap {
+            height: 400px;
+        }
+    </style>
+
+    <title>Where the iss at</title>
+
+</head>
+
+<body>
+
+    <h1>where the iss at</h1>
+    <p>latitude : <span id="latitude"></span></br>
+        longitude : <span id="longitude"></span></br>
+        altitude : <span id="altitude"></span>
+    </p>
+    <div id="myMap"></div>
+    <script>
+        const mymap = L.map('myMap').setView([0, 0], 1);
+        const marker = L.marker([0, 0], ).addTo(mymap);
+        const attribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+        const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png ';
+        const tiles = L.tileLayer(tileUrl, {
+            attribution
+        });
+        tiles.addTo(mymap);
+
+        let first = true;
+        async function getIssLocation() {
+            navigator.geolocation.getCurrentPosition(position => {
+                latitude = position.coords.latitude;
+                longitude = position.coords.longitude;
+                console.log(latitude, longitude);
+                mymap.setView([latitude, longitude], 3);
+                marker.setLatLng([latitude, longitude]);
+
+                document.getElementById('latitude').textContent = latitude.toFixed(2);
+                document.getElementById('longitude').textContent = longitude.toFixed(2);
+            });
+        }
+        getIssLocation();
+    </script>
+
+</body>
+
+</html>
